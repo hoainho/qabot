@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+qabot-reports/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+dist/
+tmp/

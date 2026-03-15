@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QABot - AI-Powered QA Automation</title>
+<meta name="description" content="AI-powered universal QA automation tool. Import any project, AI analyzes and runs tests across all layers.">
+<meta property="og:title" content="QABot - AI-Powered QA Automation">
+<meta property="og:description" content="Import any project. AI analyzes structure. Run tests across all layers. Zero config.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hoainho.github.io/qabot">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🤖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0f0f23;--bg2:#1a1a2e;--bg3:#16213e;--purple:#7c3aed;--purple-light:#a78bfa;--green:#10b981;--blue:#3b82f6;--text:#e2e8f0;--text-dim:#94a3b8;--text-muted:#64748b;--radius:16px;--glass:rgba(255,255,255,0.05);--glass-border:rgba(255,255,255,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--purple-light);text-decoration:none;transition:color .2s}
+a:hover{color:var(--green)}
+code,.mono{font-family:'JetBrains Mono',monospace}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.section{padding:100px 0}
+.section-title{font-size:2.5rem;font-weight:800;text-align:center;margin-bottom:16px;background:linear-gradient(135deg,var(--purple-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{text-align:center;color:var(--text-dim);font-size:1.1rem;max-width:600px;margin:0 auto 60px}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:60px 24px}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(16,185,129,.08),rgba(59,130,246,.1));z-index:0}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.1) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;z-index:0}
+@keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;padding:6px 16px;border-radius:50px;background:var(--glass);border:1px solid var(--glass-border);font-size:.85rem;color:var(--purple-light);margin-bottom:24px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(3rem,8vw,5rem);font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,#fff,var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p.tagline{font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--text-dim);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+.install-box{display:inline-flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--glass-border);border-radius:12px;padding:14px 20px;margin-bottom:32px;font-family:'JetBrains Mono',monospace;font-size:.95rem}
+.install-box .dollar{color:var(--green)}
+.install-box .cmd{color:var(--text)}
+.copy-btn{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .2s}
+.copy-btn:hover{background:var(--green);transform:scale(1.05)}
+.copy-btn.copied{background:var(--green)}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:600;font-size:1rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.5);color:#fff}
+.btn-outline{background:transparent;color:var(--text);border:2px solid var(--glass-border)}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple-light);transform:translateY(-2px)}
+.stats-row{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-value{font-size:1.5rem;font-weight:800;color:var(--purple-light)}
+.stat-label{font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:32px;backdrop-filter:blur(10px);transition:all .3s}
+.feature-card:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 8px 30px rgba(124,58,237,.15)}
+.feature-icon{font-size:2.5rem;margin-bottom:16px;display:block}
+.feature-card h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:#fff}
+.feature-card p{color:var(--text-dim);font-size:.95rem;line-height:1.6}
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px}
+.step{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:32px;position:relative;backdrop-filter:blur(10px)}
+.step-number{position:absolute;top:-16px;left:24px;background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem}
+.step h3{margin-top:16px;margin-bottom:8px;font-size:1.2rem;color:#fff}
+.step p{color:var(--text-dim);margin-bottom:16px;font-size:.95rem}
+.step code{display:block;background:var(--bg);border-radius:8px;padding:12px 16px;color:var(--green);font-size:.9rem}
+/* Terminal */
+.terminal{background:#0d1117;border-radius:var(--radius);overflow:hidden;max-width:700px;margin:0 auto;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.terminal-header{background:#161b22;padding:12px 16px;display:flex;gap:8px;align-items:center}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-dot.red{background:#ff5f56}
+.terminal-dot.yellow{background:#ffbd2e}
+.terminal-dot.green{background:#27c93f}
+.terminal-title{color:var(--text-muted);font-size:.8rem;margin-left:8px;font-family:'JetBrains Mono',monospace}
+.terminal-body{padding:20px;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.8;overflow-x:auto}
+.terminal-body .prompt{color:var(--green)}
+.terminal-body .flag{color:var(--blue)}
+.terminal-body .success{color:#27c93f}
+.terminal-body .info{color:var(--purple-light)}
+.terminal-body .dim{color:var(--text-muted)}
+.terminal-body .white{color:#e6edf3}
+.terminal-body .yellow{color:#ffbd2e}
+/* Tech grid */
+.tech-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.tech-pill{background:var(--glass);border:1px solid var(--glass-border);border-radius:50px;padding:10px 24px;font-size:.9rem;font-weight:500;color:var(--text-dim);transition:all .3s;backdrop-filter:blur(10px)}
+.tech-pill:hover{border-color:var(--purple);color:var(--purple-light);transform:translateY(-2px)}
+/* Quickstart */
+.quickstart-steps{max-width:600px;margin:0 auto}
+.qs-step{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}
+.qs-num{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;min-width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.qs-content{flex:1}
+.qs-content p{margin-bottom:8px;color:var(--text-dim)}
+.qs-content code{display:block;background:var(--bg2);border:1px solid var(--glass-border);border-radius:8px;padding:12px 16px;color:var(--green);font-size:.9rem}
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+/* Footer */
+.footer{padding:40px 0;text-align:center;border-top:1px solid var(--glass-border);color:var(--text-muted);font-size:.9rem}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.footer-links a{color:var(--text-dim);font-weight:500}
+.footer .heart{color:#ef4444}
+/* Responsive */
+@media(max-width:768px){.section{padding:60px 0}.section-title{font-size:2rem}.stats-row{gap:24px}.features-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.terminal-body{font-size:.75rem;padding:14px}.install-box{flex-direction:column;gap:8px;text-align:center}}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-in">
+    <span class="hero-badge">v0.6.0 &mdash; Open Source CLI Tool</span>
+    <h1>QABot</h1>
+    <p class="tagline">AI-Powered Universal QA Automation.<br>Import any project. AI analyzes structure. Run tests across all layers. Zero config.</p>
+    <div class="install-box">
+      <span><span class="dollar">$</span> <span class="cmd">npm install -g @nhonh/qabot</span></span>
+      <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
+    </div>
+    <div class="cta-row">
+      <a href="#quickstart" class="btn btn-primary">Get Started</a>
+      <a href="https://github.com/hoainho/qabot" target="_blank" class="btn btn-outline">&#9733; View on GitHub</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-value">7+</div><div class="stat-label">AI Providers</div></div>
+      <div class="stat"><div class="stat-value">7+</div><div class="stat-label">Test Runners</div></div>
+      <div class="stat"><div class="stat-value">3</div><div class="stat-label">Test Layers</div></div>
+      <div class="stat"><div class="stat-value">13</div><div class="stat-label">Releases</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section" id="features">
+  <div class="container">
+    <h2 class="section-title fade-in">Powerful Features</h2>
+    <p class="section-subtitle fade-in">Everything you need to automate QA across your entire stack</p>
+    <div class="features-grid">
+      <div class="feature-card fade-in"><span class="feature-icon">&#129302;</span><h3>AI-Powered Analysis</h3><p>AI scans your codebase and generates comprehensive test cases. Supports OpenAI, Claude, Gemini, DeepSeek, Groq, Ollama, and custom proxy.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#128269;</span><h3>Smart Detection</h3><p>Auto-detects React, Next.js, Vue, Angular, .NET, Python projects &mdash; including framework, bundler, state management, and auth.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#129514;</span><h3>Universal Runner</h3><p>One CLI for Jest, Vitest, Playwright, Cypress, pytest, xUnit, and dotnet-test. No more switching between tools.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#128202;</span><h3>Beautiful Reports</h3><p>Interactive HTML reports with pass/fail charts, duration breakdown, historical tracking, and JSON export for CI/CD.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#127917;</span><h3>E2E Generation</h3><p>AI generates Playwright E2E tests from feature descriptions with automatic error detection and self-healing fixes.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#9889;</span><h3>Multi-Layer Testing</h3><p>Unit, integration, and E2E &mdash; run them separately or together. Filter by layer, feature, or priority.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#128274;</span><h3>Environment Aware</h3><p>Seamlessly switch between local, staging, and production environments. Each gets its own config and credentials.</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">&#127760;</span><h3>Multi-AI Provider</h3><p>Switch providers instantly &mdash; OpenAI, Claude, Gemini, DeepSeek, Groq, Ollama, or bring your own proxy endpoint.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <h2 class="section-title fade-in">How It Works</h2>
+    <p class="section-subtitle fade-in">Three commands to automate your entire QA workflow</p>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-number">1</div>
+        <h3>Initialize</h3>
+        <p>QABot scans your project, detects frameworks, test runners, features, and environments automatically.</p>
+        <code>$ qabot init</code>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">2</div>
+        <h3>Run Tests</h3>
+        <p>Execute tests across unit, integration, and E2E layers. Get beautiful reports with pass/fail stats.</p>
+        <code>$ qabot run --layer unit e2e</code>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">3</div>
+        <h3>Generate with AI</h3>
+        <p>AI analyzes your code and generates production-ready test files. Auto-fixes if tests fail on first run.</p>
+        <code>$ qabot generate login</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Terminal Demo -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title fade-in">See It In Action</h2>
+    <p class="section-subtitle fade-in">Real output from QABot analyzing and testing a React project</p>
+    <div class="terminal fade-in">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">qabot &mdash; terminal</span>
+      </div>
+      <div class="terminal-body">
+<span class="prompt">$</span> <span class="white">qabot init</span>
+<span class="success">&#10003;</span> <span class="dim">Analyzing project...</span>
+
+<span class="info">  QABot - Project Analysis</span>
+<span class="dim">  Project:    </span><span class="white">my-react-app</span>
+<span class="dim">  Type:       </span><span class="white">react-spa</span>
+<span class="dim">  Framework:  </span><span class="white">React 18</span>
+<span class="dim">  Runners:    </span><span class="white">Jest, Playwright</span>
+<span class="dim">  Features:   </span><span class="white">12 detected</span>
+<span class="dim">  Unit Tests: </span><span class="white">45 files</span>
+<span class="dim">  E2E Tests:  </span><span class="white">8 files</span>
+
+<span class="prompt">$</span> <span class="white">qabot run</span>
+
+  <span class="info">Jest</span> <span class="dim">(unit)</span>
+    <span class="success">&#10003;</span> <span class="white">Auth service tests</span>       <span class="dim">(234ms)</span>
+    <span class="success">&#10003;</span> <span class="white">Cart reducer tests</span>       <span class="dim">(89ms)</span>
+    <span class="success">&#10003;</span> <span class="white">API middleware tests</span>     <span class="dim">(156ms)</span>
+
+  <span class="info">Playwright</span> <span class="dim">(e2e)</span>
+    <span class="success">&#10003;</span> <span class="white">Login flow</span>               <span class="dim">(1.2s)</span>
+    <span class="success">&#10003;</span> <span class="white">Checkout flow</span>            <span class="dim">(2.1s)</span>
+
+  <span class="white">Summary:</span> <span class="success">5 passed</span><span class="white">,</span> <span class="white">0 failed</span> <span class="dim">(3.8s)</span>
+  <span class="dim">Report: ./qabot-reports/index.html</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Supported Tech -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <h2 class="section-title fade-in">Supported Technologies</h2>
+    <p class="section-subtitle fade-in">Works with your favorite frameworks, test runners, and AI providers</p>
+    <div class="tech-grid fade-in">
+      <span class="tech-pill">React</span>
+      <span class="tech-pill">Next.js</span>
+      <span class="tech-pill">Vue</span>
+      <span class="tech-pill">Angular</span>
+      <span class="tech-pill">Node.js</span>
+      <span class="tech-pill">.NET</span>
+      <span class="tech-pill">Python</span>
+      <span class="tech-pill">Jest</span>
+      <span class="tech-pill">Vitest</span>
+      <span class="tech-pill">Playwright</span>
+      <span class="tech-pill">Cypress</span>
+      <span class="tech-pill">pytest</span>
+      <span class="tech-pill">xUnit</span>
+      <span class="tech-pill">OpenAI</span>
+      <span class="tech-pill">Anthropic Claude</span>
+      <span class="tech-pill">Google Gemini</span>
+      <span class="tech-pill">DeepSeek</span>
+      <span class="tech-pill">Groq</span>
+      <span class="tech-pill">Ollama</span>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Start -->
+<section class="section" id="quickstart">
+  <div class="container">
+    <h2 class="section-title fade-in">Quick Start</h2>
+    <p class="section-subtitle fade-in">Get up and running in under a minute</p>
+    <div class="quickstart-steps fade-in">
+      <div class="qs-step">
+        <div class="qs-num">1</div>
+        <div class="qs-content">
+          <p>Install QABot globally</p>
+          <code>npm install -g @nhonh/qabot</code>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">2</div>
+        <div class="qs-content">
+          <p>Navigate to your project</p>
+          <code>cd your-project</code>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">3</div>
+        <div class="qs-content">
+          <p>Initialize QABot (auto-detects everything)</p>
+          <code>qabot init</code>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">4</div>
+        <div class="qs-content">
+          <p>Run all tests across every layer</p>
+          <code>qabot run</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- npm Stats -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container" style="text-align:center">
+    <h2 class="section-title fade-in">Available on npm</h2>
+    <p class="section-subtitle fade-in">Install from the npm registry and start testing</p>
+    <div class="badges fade-in">
+      <a href="https://www.npmjs.com/package/@nhonh/qabot"><img src="https://img.shields.io/npm/v/@nhonh/qabot?color=cb3837&logo=npm&style=for-the-badge" alt="npm version"></a>
+      <a href="https://www.npmjs.com/package/@nhonh/qabot"><img src="https://img.shields.io/npm/dw/@nhonh/qabot?color=cb3837&logo=npm&label=downloads%2Fweek&style=for-the-badge" alt="downloads/week"></a>
+      <a href="https://www.npmjs.com/package/@nhonh/qabot"><img src="https://img.shields.io/npm/dt/@nhonh/qabot?color=cb3837&logo=npm&label=total%20downloads&style=for-the-badge" alt="total downloads"></a>
+      <a href="https://github.com/hoainho/qabot/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@nhonh/qabot?color=blue&style=for-the-badge" alt="license"></a>
+      <a href="https://nodejs.org"><img src="https://img.shields.io/node/v/@nhonh/qabot?color=339933&logo=node.js&logoColor=white&style=for-the-badge" alt="node version"></a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/hoainho/qabot">GitHub</a>
+      <a href="https://www.npmjs.com/package/@nhonh/qabot">npm</a>
+      <a href="https://github.com/hoainho/qabot/blob/main/LICENSE">MIT License</a>
+    </div>
+    <p>Made with <span class="heart">&hearts;</span> by <a href="https://github.com/hoainho">Hoai Nho</a></p>
+    <p style="margin-top:8px;font-size:.8rem">&copy; 2025 QABot. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+// Copy to clipboard
+function copyInstall(btn) {
+  navigator.clipboard.writeText("npm install -g @nhonh/qabot").then(() => {
+    btn.textContent = "Copied!";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = "Copy";
+      btn.classList.remove("copied");
+    }, 2000);
+  });
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll("a[href^="#"]").forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+</script>
+</body>
+</html>
