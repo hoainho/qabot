@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0f23"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.06">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="60" y1="0" x2="60" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="180" y1="0" x2="180" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="240" y1="0" x2="240" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="420" y1="0" x2="420" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="480" y1="0" x2="480" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="540" y1="0" x2="540" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="660" y1="0" x2="660" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="720" y1="0" x2="720" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="780" y1="0" x2="780" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="960" y1="0" x2="960" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="1020" y1="0" x2="1020" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="1080" y1="0" x2="1080" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="1140" y1="0" x2="1140" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="1200" y2="630" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="60" x2="1200" y2="60" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="180" x2="1200" y2="180" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="480" x2="1200" y2="480" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="540" x2="1200" y2="540" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#7c3aed" stroke-width="1"/>
+  </g>
+
+  <!-- Purple glow blobs -->
+  <circle cx="200" cy="315" r="300" fill="#7c3aed" opacity="0.08"/>
+  <circle cx="1000" cy="315" r="250" fill="#3b82f6" opacity="0.06"/>
+  <circle cx="600" cy="100" r="200" fill="#10b981" opacity="0.04"/>
+
+  <!-- Left side: Robot icon -->
+  <g transform="translate(100, 165)">
+    <!-- Robot head background -->
+    <rect x="0" y="0" width="200" height="200" rx="42" fill="url(#purpleGrad)" opacity="0.9"/>
+    <!-- Robot face circle -->
+    <circle cx="100" cy="85" r="58" fill="white" opacity="0.95"/>
+    <!-- Eyes -->
+    <circle cx="80" cy="78" r="12" fill="#7c3aed"/>
+    <circle cx="120" cy="78" r="12" fill="#7c3aed"/>
+    <circle cx="83" cy="75" r="4" fill="white"/>
+    <circle cx="123" cy="75" r="4" fill="white"/>
+    <!-- Smile -->
+    <path d="M76 98 Q100 118 124 98" stroke="#7c3aed" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Antenna -->
+    <line x1="100" y1="27" x2="100" y2="8" stroke="white" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="100" cy="4" r="7" fill="#10b981"/>
+    <!-- Ears -->
+    <rect x="28" y="66" width="14" height="28" rx="7" fill="white" opacity="0.9"/>
+    <rect x="158" y="66" width="14" height="28" rx="7" fill="white" opacity="0.9"/>
+    <!-- QA text -->
+    <text x="100" y="175" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="54" fill="white" letter-spacing="-2">QA</text>
+    <!-- Checkmark badge -->
+    <circle cx="158" cy="38" r="18" fill="#10b981"/>
+    <path d="M149 38 L155 44 L168 31" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Right side: Text content -->
+  <g transform="translate(370, 150)">
+    <!-- Title -->
+    <text font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="86" fill="url(#textGrad)" letter-spacing="-2">QABot</text>
+
+    <!-- Subtitle -->
+    <text y="70" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="28" fill="url(#greenGrad)">AI-Powered Universal QA Automation</text>
+
+    <!-- Description -->
+    <text y="120" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="20" fill="#94a3b8">Import any project. AI analyzes structure.</text>
+    <text y="150" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="20" fill="#94a3b8">Run tests across all layers. Zero config.</text>
+
+    <!-- Feature pills -->
+    <g transform="translate(0, 190)">
+      <rect x="0" y="0" width="130" height="38" rx="19" fill="#7c3aed" opacity="0.2" stroke="#7c3aed" stroke-width="1"/>
+      <text x="65" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" fill="#a78bfa">7+ AI Providers</text>
+
+      <rect x="145" y="0" width="140" height="38" rx="19" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+      <text x="215" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" fill="#60a5fa">7+ Test Runners</text>
+
+      <rect x="300" y="0" width="130" height="38" rx="19" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="1"/>
+      <text x="365" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" fill="#34d399">3 Test Layers</text>
+
+      <rect x="445" y="0" width="100" height="38" rx="19" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="1"/>
+      <text x="495" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" fill="#fbbf24">MIT License</text>
+    </g>
+
+    <!-- npm install command -->
+    <g transform="translate(0, 252)">
+      <rect x="0" y="0" width="400" height="44" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <text x="16" y="28" font-family="monospace" font-size="16" fill="#10b981">$</text>
+      <text x="32" y="28" font-family="monospace" font-size="16" fill="#e6edf3"> npm install -g @nhonh/qabot</text>
+    </g>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect y="600" width="1200" height="30" fill="url(#purpleGrad)" opacity="0.6"/>
+  <text x="600" y="621" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" fill="white" opacity="0.9">npmjs.com/package/@nhonh/qabot  ·  github.com/hoainho/qabot  ·  MIT License</text>
+</svg>
